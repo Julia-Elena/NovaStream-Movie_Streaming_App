@@ -3,6 +3,7 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Dashboard from "./components/Dashboard";
 import App from "./App";
+import PrivateRoute from "./components/PrivateRoute";
 
 export const router = createBrowserRouter([
 	{
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: "/dashboard",
-		element: <Dashboard />,
+		element: (
+			<PrivateRoute>
+				<Dashboard />
+			</PrivateRoute>
+		),
 	},
 ]);

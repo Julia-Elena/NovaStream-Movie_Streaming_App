@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext"
+import NavbarSigning from "./navbar/NavbarSigning";
 
 const Signup = () => {
 const [username, setUsername] = useState("")
@@ -23,15 +24,33 @@ const handleSignUp = async (e) => {
 		return;
 	}
 
+	if(password.length < 6) {
+		setError("Password should be at least 6 characters");
+		return;
+	}
+
+	if(!username.trim()) {
+		setError("Username is required");
+		return;
+	}
+
+	if(!email.trim()) {
+		setError("Email is required");
+		return;
+	}
+
 	setLoading(true);
 
 	try {
 		const result = await signUpNewUser({ username, email, password });
 		if (result.success) {
-			navigate('/dashboard');
+			navigate('/');
+		} else {
+			console.error("Sign-up failed:", result.error);
+			setError("Failed to create account");
 		}
 	} catch (error) {
-		setError("Error occured");
+		setError(error.message || "An error occurred during sign up");
 	} finally {
 		setLoading(false);
 	}
@@ -39,7 +58,8 @@ const handleSignUp = async (e) => {
 
 	return (
 		<div>
-			<form onSubmit={handleSignUp} className="max-w-lg m-auto pt-5">
+			<NavbarSigning />
+			<form onSubmit={handleSignUp} className="max-w-lg m-auto pt-6">
 				<h2 className="font-bold text-center pb-6">Sign Up</h2>
 				<div className="flex flex-col justify-center items-center  gap-4 mb-4">
 					<label className="floating-label w-[60%]">
