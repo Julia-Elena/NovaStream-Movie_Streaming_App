@@ -1,0 +1,106 @@
+import React from "react";
+import NavbarMain from "./navbar/NavbarMain";
+
+const AddContent = () => {
+	return (
+		<>
+			<NavbarMain />
+			<div className=''>
+				<header className='text-white text-2xl text-center font-bold py-5'>
+					Add Content
+				</header>
+
+				<div className='card bg-base-100 w-150 shadow-sm mx-auto h-200'>
+					<div className='card-body pt-12 pb-4 ml-4 text-left justify-start gap-2'>
+						<div className='flex flex-col gap-3'>
+							<div className='text-sm font-medium text-gray-400'>Content type</div>
+							<div className='flex gap-4'>
+								{/* Movie Option */}
+								<label className='flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl border-2 border-transparent has-[:checked]:border-accent transition-all'>
+									<input
+										type='radio'
+										name='content'
+										className='radio radio-accent'
+										defaultChecked
+									/>
+									<span className='text-sm font-medium text-white'>Movie</span>
+								</label>
+
+								{/* Series Option */}
+								<label className='flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl border-2 border-transparent has-[:checked]:border-accent transition-all'>
+									<input
+										type='radio'
+										name='content'
+										className='radio radio-accent'
+									/>
+									<span className='text-sm font-medium text-white'>Series</span>
+								</label>
+							</div>
+
+							{/* Title */}
+							<div className='flex flex-col gap-1 mb-4 pt-1'>
+								<label className='text-sm font-medium text-gray-400'>
+									Title
+								</label>
+								<input
+									type='text'
+									placeholder='Enter title'
+									className='input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%]'
+								/>
+							</div>
+
+							{/* Description */}
+							<div className='flex flex-col gap-1 mb-4'>
+								<label className='text-sm font-medium text-gray-400'>
+									Description
+								</label>
+								<textarea
+									placeholder='Enter a description...'
+									className='textarea textarea-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%] h-24'
+								></textarea>
+							</div>
+
+							{/* Release Year Field */}
+							<div className='flex flex-col gap-1 mb-6'>
+								{" "}
+								{/* Slightly more margin here before the files */}
+								<label className='text-sm font-medium text-gray-400'>
+									Release year
+								</label>
+								<input
+									type='number'
+									placeholder='e.g. 2024'
+									className='input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%]'
+								/>
+							</div>
+
+                            {/* Poster */}
+							<div className='text-sm font-medium text-gray-400'>Poster</div>
+							<label className='flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl transition-all w-[97%]'>
+								<input
+									type='file'
+									className='file-input file-input-accent w-full'
+								/>
+							</label>
+
+                            {/* Content file */}
+							<div className='text-sm font-medium text-gray-400 pt-1'>Content file</div>
+							<label className='flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl transition-all w-[97%]'>
+								<input
+									type='file'
+									className='file-input file-input-accent w-full'
+								/>
+							</label>
+
+                            <div className="flex items-center justify-center">
+                                <button className='btn btn-accent btn-outline rounded-lg mt-4.5 w-[30%]'>Add content</button>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
+
+export default AddContent;

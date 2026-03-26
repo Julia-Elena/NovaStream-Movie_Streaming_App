@@ -20,7 +20,7 @@ function NavbarMain() {
 	};
 
 	return (
-		<div className='navbar bg-transparent shadow-sm'>
+		<div className='navbar bg-transparent border-b border-accent shadow-sm'>
 			<div className='navbar-start'>
 				<a href='/' className='hover:cursor-pointer ml-4 text-xl text-center'>
 					NovaStream
@@ -79,6 +79,26 @@ function NavbarMain() {
 										</p>
 									</div>
 								</NavLink>
+							</li>
+							<li className='border-b flex gap-1'>
+								<div>
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										fill='none'
+										viewBox='0 0 24 24'
+										stroke-width='1.5'
+										stroke='currentColor'
+										class='size-5'
+									>
+										<path
+											stroke-linecap='round'
+											stroke-linejoin='round'
+											d='M12 4.5v15m7.5-7.5h-15'
+										/>
+									</svg>
+
+									<NavLink to='/addcontent'>Create Content</NavLink>
+								</div>
 							</li>
 							<li className='pt-1 flex gap-1'>
 								<div>
