@@ -8,3 +8,4 @@ async def get_genres_service():
         return genres.data
     except Exception as e:
         return {"error": f"Failed to fetch genres: {str(e)}"}
+    

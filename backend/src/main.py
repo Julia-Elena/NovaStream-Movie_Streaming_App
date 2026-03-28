@@ -5,10 +5,27 @@ from routers.users import users
 from routers.movies import movies
 from routers.content import content
 from routers.genres import genres
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI( title="FastAPI NovaStream Application",
     description="A FastAPI application for NovaStream backend services.",
     version="v1")
+
+# Allow your frontend origin
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:8080",
+    "http://localhost:5173/addcontent"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(health,tags=["Health"])
 app.include_router(users,tags=["Users"])
