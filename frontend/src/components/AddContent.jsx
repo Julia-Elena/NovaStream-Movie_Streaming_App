@@ -23,6 +23,8 @@ const AddContent = () => {
 	const [posterFile, setPosterFile] = useState(null);
 	const [videoFile, setVideoFile] = useState(null);
 	const [uploading, setUploading] = useState(false);
+	const [posterKey, setPosterKey] = useState(0);
+	const [videoKey, setVideoKey] = useState(0);
 
 	useEffect(() => {
 		const fetchGenres = async () => {
@@ -143,13 +145,13 @@ const AddContent = () => {
 
 			// Upload poster if selected
 			if (posterFile) {
-				const posterFileName = `${formData.title}/${Date.now()}-${posterFile.name}`;
+				const posterFileName = `${formData.title.trim()}/${Date.now()}-${posterFile.name}`;
 				posterUrl = await uploadFile(posterFile, "Movies", posterFileName);
 			}
 
 			// Upload video if selected
 			if (videoFile) {
-				const videoFileName = `${formData.title}/${Date.now()}-${videoFile.name}`;
+				const videoFileName = `${formData.title.trim()}/${Date.now()}-${videoFile.name}`;
 				videoUrl = await uploadFile(videoFile, "Movies", videoFileName);
 			}
 
@@ -215,6 +217,8 @@ const AddContent = () => {
 			setPosterFile(null);
 			setVideoFile(null);
 			setSelectedGenreTags([]);
+			setPosterKey((prev) => prev + 1);
+			setVideoKey((prev) => prev + 1);
 		} catch (error) {
 			console.error("Submission failed:", error);
 			alert("Failed to add content. Please try again.");
@@ -412,6 +416,7 @@ const AddContent = () => {
 							<div className="text-sm font-medium text-gray-400">Poster</div>
 							<label className="flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl transition-all w-[97%]">
 								<input
+									key={posterKey}
 									type="file"
 									accept="image/*"
 									onChange={handlePosterFileChange}
@@ -425,6 +430,7 @@ const AddContent = () => {
 							</div>
 							<label className="flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl transition-all w-[97%]">
 								<input
+									key={videoKey}
 									type="file"
 									accept="video/*"
 									onChange={handleVideoFileChange}

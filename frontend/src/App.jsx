@@ -41,11 +41,7 @@ function App() {
 	return (
 		<>
 			<NavbarMain />
-			<div className="container mx-auto px-4 py-8">
-				<header className="text-white text-3xl text-center font-bold py-5 mb-8">
-					Movies
-				</header>
-
+			<div className="w-full px-6 py-8">
 				{loading && (
 					<div className="flex justify-center items-center min-h-64">
 						<div className="loading loading-spinner loading-lg"></div>
@@ -68,7 +64,7 @@ function App() {
 				)}
 
 				{!loading && !error && movies.length > 0 && (
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
 						{movies.map((movie) => (
 							<MovieCard
 								key={movie.id}
