@@ -6,8 +6,6 @@ const MovieCard = ({ movie, onWatchClick }) => {
 	const [isInWatchlist, setIsInWatchlist] = useState(false);
 
 	const handleWatchClick = (e) => {
-		if (e.currentTarget !== e.target) return;
-
 		if (onWatchClick) {
 			onWatchClick(movie);
 		}
