@@ -1,110 +1,115 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext"
+import { UserAuth } from "../context/AuthContext";
 import NavbarSigning from "./navbar/NavbarSigning";
 
 const Signup = () => {
-const [username, setUsername] = useState("")
-const [email, setEmail] = useState("")
-const [password, setPassword] = useState("")
-const [confirmPassword, setConfirmPassword] = useState("")
-const [error, setError] = useState("")
-const [loading, setLoading] = useState("")
+	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState("");
 
-const {session, signUpNewUser} = UserAuth();
-const navigate = useNavigate();
-console.log(session);
-//console.log(username, email, password, confirmPassword);
+	const { session, signUpNewUser } = UserAuth();
+	const navigate = useNavigate();
+	console.log(session);
+	//console.log(username, email, password, confirmPassword);
 
-const handleSignUp = async (e) => {
-	e.preventDefault();
+	const handleSignUp = async (e) => {
+		e.preventDefault();
 
-	if(password !== confirmPassword) {
-		setError("Passwords do not match");
-		return;
-	}
-
-	if(password.length < 6) {
-		setError("Password should be at least 6 characters");
-		return;
-	}
-
-	if(!username.trim()) {
-		setError("Username is required");
-		return;
-	}
-
-	if(!email.trim()) {
-		setError("Email is required");
-		return;
-	}
-
-	setLoading(true);
-
-	try {
-		const result = await signUpNewUser({ username, email, password });
-		if (result.success) {
-			navigate('/');
-		} else {
-			console.error("Sign-up failed:", result.error);
-			setError("Failed to create account");
+		if (password !== confirmPassword) {
+			setError("Passwords do not match");
+			return;
 		}
-	} catch (error) {
-		setError(error.message || "An error occurred during sign up");
-	} finally {
-		setLoading(false);
-	}
-};
+
+		if (password.length < 6) {
+			setError("Password should be at least 6 characters");
+			return;
+		}
+
+		if (!username.trim()) {
+			setError("Username is required");
+			return;
+		}
+
+		if (!email.trim()) {
+			setError("Email is required");
+			return;
+		}
+
+		setLoading(true);
+
+		try {
+			const result = await signUpNewUser({ username, email, password });
+			if (result.success) {
+				navigate("/");
+			} else {
+				console.error("Sign-up failed:", result.error);
+				setError("Failed to create account");
+			}
+		} catch (error) {
+			setError(error.message || "An error occurred during sign up");
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	return (
-		<div>
+		<div className="bg-base-300 min-h-screen">
 			<NavbarSigning />
 			<form onSubmit={handleSignUp} className="max-w-lg m-auto pt-6">
 				<h2 className="font-bold text-center pb-6">Sign Up</h2>
 				<div className="flex flex-col justify-center items-center  gap-4 mb-4">
 					<label className="floating-label w-[60%]">
-						<span>Username</span>
+						<span className="bg-base-300">Username</span>
 						<input
 							onChange={(e) => setUsername(e.target.value)}
 							type="text"
 							placeholder="Username"
-							className="input input-md w-full"
+							className="input input-md w-full bg-base-200"
 						/>
 					</label>
 					<label className="floating-label w-[60%]">
-						<span>Email</span>
+						<span className="bg-base-300">Email</span>
 						<input
 							onChange={(e) => setEmail(e.target.value)}
 							type="email"
 							placeholder="Email"
-							className="input input-md w-full "
+							className="input input-md w-full bg-base-200"
 						/>
 					</label>
 					<label className="floating-label w-[60%]">
-						<span>Password</span>
+						<span className="bg-base-300">Password</span>
 						<input
 							onChange={(e) => setPassword(e.target.value)}
 							type="password"
 							placeholder="Password"
-							className="input input-md w-full"
+							className="input input-md w-full bg-base-200"
 						/>
 					</label>
 					<label className="floating-label w-[60%]">
-						<span>Confirm password</span>
+						<span className="bg-base-300">Confirm password</span>
 						<input
 							onChange={(e) => setConfirmPassword(e.target.value)}
 							type="password"
 							placeholder="Confirm password"
-							className="input input-md w-full"
+							className="input input-md w-full bg-base-200"
 						/>
 					</label>
 					{error && <p className="text-xs text-error text-center">{error}</p>}
-					<button type="submit" disabled={ loading } className="btn rounded-lg btn-outline btn-primary w-[50%] ">Create account</button>
-					
+					<button
+						type="submit"
+						disabled={loading}
+						className="btn rounded-lg btn-outline btn-primary w-[50%] "
+					>
+						Create account
+					</button>
 				</div>
 				<p className="text-sm text-gray-600">
 					Already have an account?{" "}
-					<Link to="/signin" className="text-info hover:underline">
+					<Link to="/signin" className="text-accent hover:underline">
 						Sign in
 					</Link>
 				</p>

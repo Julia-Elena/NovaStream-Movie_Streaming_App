@@ -230,12 +230,12 @@ const AddContent = () => {
 	return (
 		<>
 			<NavbarMain />
-			<div>
+			<div className="min-h-screen bg-base-300 pb-10">
 				<header className="text-white text-2xl text-center font-bold py-5">
 					Add Content
 				</header>
 
-				<div className="card bg-base-100 w-150 shadow-sm mx-auto h-auto">
+				<div className="card bg-base-200 w-150 shadow-sm mx-auto h-auto">
 					<form onSubmit={handleSubmit}>
 						<div className="card-body pt-12 pb-4 ml-4 text-left justify-start gap-2">
 							<div className="flex flex-col gap-3">
@@ -244,12 +244,12 @@ const AddContent = () => {
 								</div>
 								<div className="flex gap-4">
 									<label
-										className={`flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl border-2 transition-all ${contentType === "Movie" ? "border-accent" : "border-transparent"}`}
+										className={`flex items-center gap-3 cursor-pointer bg-base-100 py-3 px-5 rounded-xl border-2 transition-all ${contentType === "Movie" ? "border-secondary" : "border-transparent"}`}
 									>
 										<input
 											type="radio"
 											name="content"
-											className="radio radio-accent"
+											className="radio radio-secondary hover:bg-base-300"
 											checked={contentType === "Movie"}
 											onChange={() => setContentType("Movie")}
 										/>
@@ -259,12 +259,12 @@ const AddContent = () => {
 									</label>
 
 									<label
-										className={`flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl border-2 transition-all ${contentType === "Series" ? "border-accent" : "border-transparent"}`}
+										className={`flex items-center gap-3 cursor-pointer bg-base-100 py-3 px-5 rounded-xl border-2 transition-all ${contentType === "Series" ? "border-secondary" : "border-transparent"}`}
 									>
 										<input
 											type="radio"
 											name="content"
-											className="radio radio-accent"
+											className="radio radio-secondary  hover:bg-base-300"
 											checked={contentType === "Series"}
 											onChange={() => setContentType("Series")}
 										/>
@@ -286,7 +286,7 @@ const AddContent = () => {
 									value={formData.title}
 									onChange={handleInputChange}
 									placeholder="Enter title"
-									className="input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%]"
+									className="input input-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-[96%]"
 								/>
 							</div>
 
@@ -303,7 +303,7 @@ const AddContent = () => {
 											value={formData.season_number}
 											onChange={handleInputChange}
 											placeholder="e.g. 1"
-											className="input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-full"
+											className="input input-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-full"
 										/>
 									</div>
 									<div className="flex-1">
@@ -316,7 +316,7 @@ const AddContent = () => {
 											value={formData.episode_title}
 											onChange={handleInputChange}
 											placeholder="Enter episode title"
-											className="input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-full"
+											className="input input-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-full"
 										/>
 									</div>
 									<div className="flex-1">
@@ -329,7 +329,7 @@ const AddContent = () => {
 											value={formData.episode_number}
 											onChange={handleInputChange}
 											placeholder="e.g. 5"
-											className="input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-full"
+											className="input input-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-full"
 										/>
 									</div>
 								</div>
@@ -345,7 +345,7 @@ const AddContent = () => {
 									value={formData.description}
 									onChange={handleInputChange}
 									placeholder="Enter a description..."
-									className="textarea textarea-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%] h-24"
+									className="textarea textarea-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-[96%] h-24"
 								></textarea>
 							</div>
 
@@ -359,7 +359,7 @@ const AddContent = () => {
 									value={formData.duration_minutes}
 									onChange={handleInputChange}
 									placeholder="e.g. 120"
-									className="input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%]"
+									className="input input-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-[96%]"
 								/>
 							</div>
 
@@ -373,7 +373,7 @@ const AddContent = () => {
 									value={formData.release_year}
 									onChange={handleInputChange}
 									placeholder="e.g. 2024"
-									className="input input-bordered bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%]"
+									className="input input-bordered bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-[96%]"
 								/>
 							</div>
 
@@ -385,7 +385,7 @@ const AddContent = () => {
 								<select
 									value={currentDropdownValue}
 									onChange={handleGenreAdd}
-									className="select bg-base-200 border-none focus:ring-1 focus:ring-accent w-[96%] mb-2"
+									className="select bg-base-100 rounded-xl border-none focus:ring-1 focus:ring-secondary w-[96%] mb-2"
 								>
 									<option disabled>Select genres</option>
 									{allGenres.map((genre) => (
@@ -398,7 +398,7 @@ const AddContent = () => {
 									{selectedGenreTags.map((tag) => (
 										<div
 											key={tag.id}
-											className="flex items-center gap-1.5 label bg-base-200 py-2 px-4 rounded-lg border-2 border-accent text-sm font-medium text-white transition-all cursor-pointer hover:bg-neutral"
+											className="flex items-center gap-1.5 label bg-base-100 py-2 px-4 rounded-xl border-2 border-secondary text-sm font-medium text-white transition-all cursor-pointer hover:bg-base-300"
 											onClick={() =>
 												setSelectedGenreTags((prev) =>
 													prev.filter((t) => t.id !== tag.id),
@@ -413,14 +413,16 @@ const AddContent = () => {
 							</div>
 
 							{/* Poster */}
-							<div className="text-sm font-medium text-gray-400">Poster</div>
+							<div className="text-sm font-medium rounded-xl text-gray-400">
+								Poster
+							</div>
 							<label className="flex items-center gap-3 cursor-pointer bg-base-200 py-3 px-5 rounded-xl transition-all w-[97%]">
 								<input
 									key={posterKey}
 									type="file"
 									accept="image/*"
 									onChange={handlePosterFileChange}
-									className="file-input file-input-accent w-full"
+									className="file-input file-input-secondary bg-base-100 rounded-xl w-full"
 								/>
 							</label>
 
@@ -434,14 +436,14 @@ const AddContent = () => {
 									type="file"
 									accept="video/*"
 									onChange={handleVideoFileChange}
-									className="file-input file-input-accent w-full"
+									className="file-input file-input-secondary bg-base-100 rounded-xl w-full"
 								/>
 							</label>
 
 							<div className="flex items-center justify-center">
 								<button
 									type="submit"
-									className="btn btn-accent btn-outline rounded-lg mt-4.5 mb-4 w-[30%]"
+									className="btn btn-primary btn-outline rounded-xl mt-4.5 mb-4 w-[30%]"
 									disabled={uploading}
 								>
 									{uploading ? "Uploading..." : "Add content"}

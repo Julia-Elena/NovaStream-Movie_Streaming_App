@@ -222,7 +222,7 @@ const Dashboard = () => {
 								</svg>
 								<input
 									type="text"
-									className="input input-bordered w-[50%] ml-2 bg-base-200 focus:input-accent"
+									className="input input-bordered w-[50%] ml-2 bg-base-200 focus:input-primary"
 									value={editableUsername}
 									onChange={(e) => setEditableUsername(e.target.value)}
 								/>
@@ -248,7 +248,7 @@ const Dashboard = () => {
 
 						<div className="card-actions justify-center mt-6 border-t border-base-300 pt-6">
 							<button
-								className={`btn btn-outline btn-accent rounded-lg w-[67%] ${updating && "loading"}`}
+								className={`btn btn-outline btn-primary rounded-lg w-[67%] ${updating && "loading"}`}
 								onClick={handleUpdateProfile}
 								disabled={updating}
 							>
@@ -256,7 +256,7 @@ const Dashboard = () => {
 							</button>
 						</div>
 						<div className="card-actions justify-center">
-							<button className="btn btn-ghost btn-xs text-error mt-4 opacity-50 hover:opacity-100">
+							<button className="btn btn-ghost btn-sm text-error mt-4 opacity-50 hover:opacity-100">
 								Delete Account
 							</button>
 						</div>

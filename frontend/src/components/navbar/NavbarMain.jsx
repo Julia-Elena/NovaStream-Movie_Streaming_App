@@ -27,11 +27,18 @@ function NavbarMain() {
 		user?.banner_picture_url ||
 		"https://ndemrncbyerjauindwze.supabase.co/storage/v1/object/public/User_images/Default/default_banner_picture.jpg";
 
+	const fullLogoUrl =
+		"https://ndemrncbyerjauindwze.supabase.co/storage/v1/object/public/Posters/NovaStream_FullLogo.png";
+
 	return (
-		<div className="navbar bg-transparent border-b border-accent shadow-sm">
+		<div className="navbar bg-base-200 border-b border-primary shadow-sm">
 			<div className="navbar-start">
 				<a href="/" className="hover:cursor-pointer ml-4 text-xl text-center">
-					NovaStream
+					<img
+						src={fullLogoUrl}
+						alt="NovaStream Logo"
+						className="h-10 w-auto object-contain pb-1"
+					/>
 				</a>
 			</div>
 			<div className="navbar-center lg:flex">
@@ -69,7 +76,7 @@ function NavbarMain() {
 						</div>
 						<ul
 							tabIndex="-1"
-							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-5 w-55 p-4 shadow"
+							className="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-5 w-55 p-4 shadow"
 						>
 							<figure className="h-10 relative overflow-visible mb-11">
 								<div className="mb-2">
@@ -93,12 +100,12 @@ function NavbarMain() {
 									</div>
 								</div>
 							</figure>
-							<div className="flex justify-center text-center border-b pb-2">
+							<div className="flex justify-center text-center border-b border-primary pb-2">
 								<p className="text-lg font-medium">{user?.username}</p>
 							</div>
 							{user?.is_admin ? (
-								<li className="border-b flex gap-1">
-									<div>
+								<li className="border-b border-primary flex gap-1">
+									<div className="text-neutral">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
@@ -119,7 +126,7 @@ function NavbarMain() {
 								</li>
 							) : null}
 							<li className="pt-1 flex gap-1">
-								<div>
+								<div className="text-neutral">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
@@ -138,8 +145,8 @@ function NavbarMain() {
 									<NavLink to="/watchlist">Watchlist</NavLink>
 								</div>
 							</li>
-							<li className="border-b pb-1">
-								<div>
+							<li className="border-b border-primary pb-1">
+								<div className="text-neutral">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="16"
@@ -158,8 +165,8 @@ function NavbarMain() {
 									</NavLink>
 								</div>
 							</li>
-							<li className="border-b pb-1 pt-1">
-								<div>
+							<li className="border-b border-primary pb-1 pt-1">
+								<div className="text-neutral">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
@@ -180,7 +187,9 @@ function NavbarMain() {
 										/>
 									</svg>
 
-									<NavLink to="/settings">Settings</NavLink>
+									<NavLink to="/settings" c>
+										Settings
+									</NavLink>
 								</div>
 							</li>
 							<li className="pt-1">
