@@ -8,6 +8,7 @@ import AddContent from "./components/AddContent";
 import Watchlist from "./components/Watchlist";
 import History from "./components/History";
 import Settings from "./components/Settings";
+import EditContent from "./components/EditContent";
 
 export const router = createBrowserRouter([
 	{
@@ -59,6 +60,14 @@ export const router = createBrowserRouter([
 		element: (
 			<PrivateRoute>
 				<Settings />
+			</PrivateRoute>
+		),
+	},
+	{
+		path: "/editcontent",
+		element: (
+			<PrivateRoute>
+				<EditContent />
 			</PrivateRoute>
 		),
 	},
